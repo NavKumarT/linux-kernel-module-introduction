@@ -25,9 +25,10 @@ int simple_init(void)
 void simple_exit(void)
 {
 	jiffies_2 = jiffies;
-	float time_in_ms = (jiffies_2 - jiffies_1)/HZ;
-	printk(KERN_INFO "Time in ms for which the module was loaded: %f\n", time_in_ms);
-	printK(KERN_INFO "Removing Kernel module...");
+	unsigned long time_in_ms = (jiffies_2 - jiffies_1)/HZ;
+	printk(KERN_INFO "Removing Kernel module...");
+	printk(KERN_INFO "Jiffies: %lu\n", jiffies);
+	printk(KERN_INFO "Time in seconds for which the module was loaded: %lu\n", time_in_ms);
 }
 
 module_init(simple_init);
@@ -36,4 +37,3 @@ module_exit(simple_exit);
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("Simple Module");
 MODULE_AUTHOR("SGG");
-
